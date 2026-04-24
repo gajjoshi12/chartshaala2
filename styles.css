@@ -433,8 +433,13 @@ body::after {
 .chips {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: 10px;
-  padding: 30px 16px;
+  padding: 30px 16px 10px;
   max-width: 1100px; margin: 0 auto;
+}
+@media (max-width: 520px) {
+  .chips { padding: 20px 12px 4px; gap: 8px; }
+  .chip { padding: 8px 14px; font-size: 12px; }
+  .chip-ico { width: 24px; height: 24px; font-size: 10px; }
 }
 .chip {
   display: inline-flex; align-items: center; gap: 10px;
@@ -666,13 +671,16 @@ body::after {
 }
 .spotlight {
   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-  width: 70%; height: 360px;
+  width: min(70%, 640px); height: 320px;
   background:
-    linear-gradient(180deg, rgba(163,230,53,.9) 0%, rgba(34,197,94,.35) 40%, transparent 90%);
-  filter: blur(6px);
-  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
-  opacity: .55;
+    linear-gradient(180deg, rgba(163,230,53,.7) 0%, rgba(34,197,94,.25) 40%, transparent 90%);
+  filter: blur(10px);
+  clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+  opacity: .45;
   pointer-events: none;
+}
+@media (max-width: 700px) {
+  .spotlight { height: 240px; opacity: .35; }
 }
 .stats-grid {
   position: relative;
@@ -688,8 +696,44 @@ body::after {
 }
 .stat-lbl { color: var(--muted); font-size: 14px; margin-top: 6px; }
 
+/* ============================================================ SCROLL-DRIVEN CAROUSEL SECTIONS */
+.scrolly-section { position: relative; }
+.scrolly { position: relative; }
+.scrolly[data-slides="3"] { height: 300vh; }
+.scrolly[data-slides="4"] { height: 400vh; }
+.scrolly[data-slides="5"] { height: 500vh; }
+
+.scrolly-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+.pin-inner {
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pin-inner > .badge-pill { margin-top: 0; }
+.pin-inner > .h-center { margin-top: 8px; }
+.pin-inner > .sub-center { margin-bottom: 24px; }
+
+/* fall back gracefully on very short screens */
+@media (max-height: 620px) {
+  .scrolly[data-slides="3"] { height: 360vh; }
+  .scrolly[data-slides="4"] { height: 480vh; }
+}
+
 /* ============================================================ CAROUSEL (shared) */
-.carousel { position: relative; padding-top: 8px; }
+.carousel { position: relative; padding-top: 8px; width: 100%; }
 .dots {
   display: flex; justify-content: center; gap: 8px;
   margin-bottom: 18px;
@@ -815,13 +859,16 @@ body::after {
 .trust { padding-top: 40px; }
 .globe-wrap {
   position: relative;
-  height: 520px;
+  height: clamp(380px, 60vw, 520px);
   display: flex; align-items: flex-end; justify-content: center;
   margin-top: 20px;
+  overflow: hidden;
 }
 .globe {
-  position: absolute; left: 50%; bottom: -180px; transform: translateX(-50%);
-  width: 720px; height: 720px; border-radius: 50%;
+  position: absolute; left: 50%; bottom: -35%; transform: translateX(-50%);
+  width: min(720px, 140vw); height: min(720px, 140vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   background:
     radial-gradient(260px 220px at 60% 40%, rgba(163,230,53,.25), transparent 65%),
     radial-gradient(circle at 30% 30%, #1b2a20 0%, #0a1510 45%, #040806 85%),

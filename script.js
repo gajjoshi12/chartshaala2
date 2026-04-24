@@ -81,15 +81,17 @@
   }, { threshold: 0.4 });
   stats.forEach(el => countObs.observe(el));
 
-  /* ---------- carousel ---------- */
-  const makeCarousel = (trackId, prevId, nextId, carouselId) => {
-    const track = document.getElementById(trackId);
-    if (!track) return;
-    const carousel = document.getElementById(carouselId);
+  /* ---------- scroll-driven carousels ---------- */
+  const carousels = [];
+  document.querySelectorAll('.scrolly').forEach((scrolly) => {
+    const carousel = scrolly.querySelector('.scroll-carousel');
+    if (!carousel) return;
+    const track = carousel.querySelector('.c-track');
     const cards = Array.from(track.children);
     const dots = carousel.querySelectorAll('.dot');
-    let idx = 1;
-    const render = () => {
+    if (!cards.length) return;
+
+    const render = (idx) => {
       cards.forEach((c, i) => {
         c.classList.remove('active', 'prev', 'next', 'far');
         const d = i - idx;
@@ -100,26 +102,50 @@
       });
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
     };
-    const go = (n) => { idx = (n + cards.length) % cards.length; render(); };
-    document.getElementById(prevId)?.addEventListener('click', () => go(idx - 1));
-    document.getElementById(nextId)?.addEventListener('click', () => go(idx + 1));
-    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
 
-    // touch swipe
-    let sx = 0, dx = 0;
-    track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; dx = 0; }, { passive: true });
-    track.addEventListener('touchmove',  e => { dx = e.touches[0].clientX - sx; }, { passive: true });
-    track.addEventListener('touchend',   () => { if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1)); });
+    // initial state
+    render(0);
 
-    // autoplay, pause on hover
-    let timer = setInterval(() => go(idx + 1), 5000);
-    carousel.addEventListener('mouseenter', () => clearInterval(timer));
-    carousel.addEventListener('mouseleave', () => timer = setInterval(() => go(idx + 1), 5000));
+    // dot click scrolls the page to that slide's scroll position
+    dots.forEach((d, i) => d.addEventListener('click', () => {
+      const rect = scrolly.getBoundingClientRect();
+      const range = scrolly.offsetHeight - window.innerHeight;
+      const targetTop = scrolly.offsetTop + (i / cards.length) * range + 2;
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }));
 
-    render();
+    carousels.push({ scrolly, cards, render, lastIdx: -1 });
+  });
+
+  const updateCarousels = () => {
+    const vh = window.innerHeight;
+    carousels.forEach((c) => {
+      const rect = c.scrolly.getBoundingClientRect();
+      const total = c.scrolly.offsetHeight - vh;
+      if (total <= 0) return;
+      // progress 0 when top of scrolly hits viewport top, 1 when bottom hits viewport bottom
+      const raw = -rect.top / total;
+      const progress = Math.max(0, Math.min(0.9999, raw));
+      const idx = Math.min(c.cards.length - 1, Math.floor(progress * c.cards.length));
+      if (idx !== c.lastIdx) {
+        c.lastIdx = idx;
+        c.render(idx);
+      }
+    });
   };
-  makeCarousel('howTrack', 'howPrev', 'howNext', 'howCarousel');
-  makeCarousel('payTrack', 'payPrev', 'payNext', 'payCarousel');
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateCarousels();
+      ticking = false;
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateCarousels();
 
   /* ---------- hero candlestick chart ---------- */
   const canvas = document.getElementById('heroChart');

@@ -19,6 +19,9 @@
   <div class="loader-text">loading <span>Profits</span></div>
 </div>
 
+<!-- scroll progress -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
 <!-- top nav -->
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -48,13 +51,13 @@
     <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
   </div>
   <ul class="drawer-list">
-    <li><a href="#learn">Learn</a></li>
+    <li><a href="#learn">Why Us</a></li>
     <li><a href="#platform">Platform</a></li>
     <li><a href="#mentors">Mentors</a></li>
+    <li><a href="#testimonials">Stories</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#support">Support</a></li>
-    <li><a href="#signin">Sign In</a></li>
-    <li><a href="#cta">Sign Up</a></li>
-    <li><a href="#footer">Terms &amp; Conditions</a></li>
+    <li><a href="#cta">Open Account</a></li>
   </ul>
 </aside>
 <div class="drawer-scrim" id="drawerScrim"></div>
@@ -90,6 +93,16 @@
 
     <!-- phone mock with live chart -->
     <div class="hero-phone" aria-hidden="true">
+      <div class="hero-badge hb-1">
+        <span class="hb-dot"></span>
+        <div><strong>NIFTY 50</strong><small class="up">+1.24%</small></div>
+      </div>
+      <div class="hero-badge hb-2">
+        <div><strong>Live Class</strong><small>in 2m</small></div>
+      </div>
+      <div class="hero-badge hb-3">
+        <div><strong>₹12,480</strong><small class="up">P&amp;L today</small></div>
+      </div>
       <div class="phone">
         <div class="phone-notch"></div>
         <div class="phone-screen">
@@ -111,6 +124,14 @@
     </div>
   </div>
 
+  <!-- trust row -->
+  <div class="trust-row">
+    <span>Trusted by traders across India &amp; the world</span>
+    <div class="trust-marks">
+      <span>NSE</span><span>BSE</span><span>MCX</span><span>SEBI-aware</span><span>CDSL</span>
+    </div>
+  </div>
+
   <!-- chips -->
   <div class="chips">
     <div class="chip"><span class="chip-ico">0%</span><span>Brokerage</span></div>
@@ -118,6 +139,16 @@
     <div class="chip"><span class="chip-ico ico-user">👤</span><span>1-on-1 Mentor</span></div>
     <div class="chip"><span class="chip-ico ico-live">LIVE</span><span>Webinars</span></div>
     <div class="chip"><span class="chip-ico ico-expert">★</span><span>Expert Analyst</span></div>
+  </div>
+</section>
+
+<!-- ========== LIVE TICKER ========== -->
+<section class="ticker-wrap" aria-label="Live market ticker">
+  <div class="ticker-live"><span class="pulse"></span> LIVE</div>
+  <div class="ticker">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- populated by script.js -->
+    </div>
   </div>
 </section>
 
@@ -211,6 +242,60 @@
   </div>
 </section>
 
+<!-- ========== MENTORS ========== -->
+<section class="section" id="mentors">
+  <div class="badge-pill"><span class="diamond"></span> Meet Your Mentors</div>
+  <h2 class="h-center">Learn from traders, not textbooks.</h2>
+  <p class="sub-center">A squad of full-time traders &amp; analysts who teach what actually works in live markets.</p>
+
+  <div class="mentors">
+    <article class="mentor">
+      <div class="mentor-avatar" style="background:linear-gradient(135deg,#1a2a1e,#0a1510)">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11" fill="#22c55e"/><path d="M10 60c4-12 14-18 22-18s18 6 22 18" fill="#22c55e"/></svg>
+      </div>
+      <div class="mentor-body">
+        <div class="mentor-tag">Options &amp; Derivatives</div>
+        <h3>Aarav Sharma</h3>
+        <p>12+ yrs on the street. Known for iron-condor &amp; event-based plays on Bank Nifty.</p>
+        <div class="mentor-stats">
+          <span><b>8k+</b> students</span>
+          <span><b>4.9★</b> rating</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="mentor featured">
+      <div class="mentor-avatar" style="background:linear-gradient(135deg,#203515,#0e1a0a)">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11" fill="#a3e635"/><path d="M10 60c4-12 14-18 22-18s18 6 22 18" fill="#a3e635"/></svg>
+      </div>
+      <div class="mentor-body">
+        <div class="mentor-tag">Price Action &amp; Swing</div>
+        <h3>Neha Iyer</h3>
+        <p>CMT-certified. Builds high-probability swing portfolios around market structure.</p>
+        <div class="mentor-stats">
+          <span><b>14k+</b> students</span>
+          <span><b>4.9★</b> rating</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="mentor">
+      <div class="mentor-avatar" style="background:linear-gradient(135deg,#2b1515,#1a0909)">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="11" fill="#ef4444"/><path d="M10 60c4-12 14-18 22-18s18 6 22 18" fill="#ef4444"/></svg>
+      </div>
+      <div class="mentor-body">
+        <div class="mentor-tag">Crypto &amp; Macro</div>
+        <h3>Rohan Mehta</h3>
+        <p>Covers BTC/ETH cycles, on-chain flows, and India–US macro divergence.</p>
+        <div class="mentor-stats">
+          <span><b>6k+</b> students</span>
+          <span><b>4.8★</b> rating</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- ========== STATS ========== -->
 <section class="stats">
   <div class="spotlight" aria-hidden="true"></div>
@@ -218,6 +303,42 @@
     <div><div class="stat-num" data-count="15372069" data-prefix="₹">₹0</div><div class="stat-lbl">Brokerage Saved</div></div>
     <div><div class="stat-num" data-count="500000" data-suffix="+">0+</div><div class="stat-lbl">Happy Learners</div></div>
     <div><div class="stat-num" data-count="83769870" data-prefix="₹">₹0</div><div class="stat-lbl">Profits Booked</div></div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="section testimonials" id="testimonials">
+  <div class="badge-pill"><span class="diamond"></span> Learner Stories</div>
+  <h2 class="h-center">Real traders, real results.</h2>
+  <p class="sub-center">Thousands have switched from tips channels to a proper trading framework.</p>
+
+  <div class="t-grid">
+    <article class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>"I joined as a weekend trader. In four months I learned position sizing and stopped blowing up accounts. The mentor feedback on my trade journal is the real magic."</p>
+      <div class="t-user">
+        <span class="t-avatar" style="background:#1a2a1e">PK</span>
+        <div><b>Priya Kapoor</b><small>Swing Trader · Pune</small></div>
+      </div>
+    </article>
+
+    <article class="t-card featured">
+      <div class="stars">★★★★★</div>
+      <p>"Better than any ₹50k course I'd bought before. The live chart room during market hours is like pair-trading with an experienced friend. Worth every rupee."</p>
+      <div class="t-user">
+        <span class="t-avatar" style="background:#203515">AS</span>
+        <div><b>Arjun Singh</b><small>Options Trader · Delhi</small></div>
+      </div>
+    </article>
+
+    <article class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>"Finally a platform that treats education seriously. No 'guaranteed profits' nonsense — just honest coaching, risk frameworks, and a community that calls out bad setups."</p>
+      <div class="t-user">
+        <span class="t-avatar" style="background:#2b1515">SN</span>
+        <div><b>Sana Nair</b><small>Equity Investor · Bengaluru</small></div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -386,6 +507,40 @@
   </div>
 
   <a href="#signin" class="cta-btn center">Register Now <span class="arr">→</span></a>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section faq" id="faq">
+  <div class="badge-pill"><span class="diamond"></span> Frequently Asked</div>
+  <h2 class="h-center">Answers before you ask.</h2>
+  <p class="sub-center">Straight talk on brokerage, payouts, and how the learning platform works.</p>
+
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary><span>Is ChartShaala really zero brokerage?</span><i class="caret">+</i></summary>
+      <div class="faq-body">Yes — we charge zero brokerage on equity delivery, intraday, and F&amp;O. Statutory charges (STT, exchange fees, GST, stamp duty) apply as mandated by SEBI and exchanges; those aren't ours to waive.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span>How long does onboarding take?</span><i class="caret">+</i></summary>
+      <div class="faq-body">Under a minute for demat-linked signup with PAN + Aadhaar eKYC. Funding via UPI is instant; NEFT settles in ~30 minutes on business days.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Do I get one-on-one mentor time?</span><i class="caret">+</i></summary>
+      <div class="faq-body">Every paid tier includes mentor hours. The Pro tier adds a weekly 1:1 review of your trade journal, position sizing, and risk metrics — the part that actually compounds.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Can I practice without real money?</span><i class="caret">+</i></summary>
+      <div class="faq-body">Yes. Our paper-trading simulator uses live market data, real spreads, and realistic slippage. You build a track record inside ChartShaala before risking a single rupee.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Are withdrawals really instant?</span><i class="caret">+</i></summary>
+      <div class="faq-body">UPI &amp; IMPS withdrawals are processed in under a minute during banking hours. Bank-transfer withdrawals land within 24 hours on business days.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Do you guarantee returns?</span><i class="caret">+</i></summary>
+      <div class="faq-body">No — and nobody honest does. Trading involves risk. We teach frameworks, risk management, and discipline. Your results depend on you, your capital, and market conditions.</div>
+    </details>
+  </div>
 </section>
 
 <!-- ========== SUPPORT ========== -->

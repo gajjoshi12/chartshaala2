@@ -249,6 +249,81 @@
     requestAnimationFrame(loop);
   }
 
+  /* ---------- scroll progress bar ---------- */
+  const progress = document.getElementById('scrollProgress');
+  const updateProgress = () => {
+    if (!progress) return;
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    const p = total > 0 ? (h.scrollTop / total) * 100 : 0;
+    progress.style.width = p + '%';
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+
+  /* ---------- live ticker ---------- */
+  const tickerTrack = document.getElementById('tickerTrack');
+  if (tickerTrack) {
+    const seed = [
+      ['NIFTY 50',     21468.22,  1.24],
+      ['SENSEX',       71438.09,  0.88],
+      ['BANKNIFTY',    48260.55,  1.42],
+      ['RELIANCE',      2486.54, -0.58],
+      ['TCS',           3902.10,  0.91],
+      ['HDFCBANK',      1654.30,  0.44],
+      ['INFY',          1412.75, -0.12],
+      ['ICICIBANK',     1072.60,  0.72],
+      ['SBIN',           772.40,  1.10],
+      ['BHARTIARTL',    1286.95,  0.33],
+      ['ITC',            443.80, -0.24],
+      ['LT',            3587.20,  0.67],
+      ['TATASTEEL',      148.20,  2.05],
+      ['AXISBANK',      1108.45, -0.18],
+      ['ADANIPORTS',    1328.10,  0.92],
+      ['BTC/INR',    5672100.00,  2.81],
+      ['ETH/INR',     289600.00,  1.47],
+      ['USDINR',          83.28, -0.08],
+    ];
+    const fmtN = (n) => n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const row = (sym, price, chg) => {
+      const up = chg >= 0;
+      return `<span class="ticker-item">
+        <b>${sym}</b>
+        <span class="tv">${fmtN(price)}</span>
+        <span class="tc ${up ? 'up' : 'dn'} ${up ? 'arrow-up' : 'arrow-dn'}">${up ? '+' : ''}${chg.toFixed(2)}%</span>
+      </span>`;
+    };
+    // duplicate so the infinite-scroll keyframes loop seamlessly
+    const html = seed.map(([s, p, c]) => row(s, p, c)).join('');
+    tickerTrack.innerHTML = html + html;
+
+    // tiny live jitter — makes it feel alive
+    setInterval(() => {
+      const items = tickerTrack.querySelectorAll('.ticker-item');
+      items.forEach((el, i) => {
+        if (Math.random() > 0.08) return;
+        const base = seed[i % seed.length];
+        const drift = (Math.random() - 0.48) * 0.05;
+        const newChg = base[2] + drift;
+        const up = newChg >= 0;
+        const tc = el.querySelector('.tc');
+        if (tc) {
+          tc.className = `tc ${up ? 'up arrow-up' : 'dn arrow-dn'}`;
+          tc.textContent = `${up ? '+' : ''}${newChg.toFixed(2)}%`;
+        }
+      });
+    }, 2500);
+  }
+
+  /* ---------- FAQ: one open at a time ---------- */
+  document.querySelectorAll('.faq-item').forEach((d) => {
+    d.addEventListener('toggle', () => {
+      if (!d.open) return;
+      document.querySelectorAll('.faq-item').forEach((o) => { if (o !== d) o.open = false; });
+    });
+  });
+
   /* ---------- smooth anchor offset ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {

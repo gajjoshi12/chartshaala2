@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#050505" />
+<title>ChartShaala — Trade. Learn. Grow.</title>
+<meta name="description" content="ChartShaala — learn the markets, practice on live charts, and trade with confidence. Zero brokerage, expert mentors, 24x7 support." />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- loader -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-text">loading <span>Profits</span></div>
+</div>
+
+<!-- top nav -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="ChartShaala">
+      <img src="logo.png" alt="" class="brand-mark" />
+      <span class="brand-text">ChartShaala</span>
+    </a>
+
+    <nav class="nav-center" aria-label="Primary">
+      <a class="pill pill-accent" href="#cta">Get Started</a>
+      <a class="pill pill-ghost" href="#signin">Sign In</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="pill pill-accent nav-cta" href="#cta">Get Started</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- slide-out menu -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span>Menu</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <ul class="drawer-list">
+    <li><a href="#learn">Learn</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#mentors">Mentors</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#signin">Sign In</a></li>
+    <li><a href="#cta">Sign Up</a></li>
+    <li><a href="#footer">Terms &amp; Conditions</a></li>
+  </ul>
+</aside>
+<div class="drawer-scrim" id="drawerScrim"></div>
+
+<!-- side dock (desktop) -->
+<aside class="dock" aria-label="Downloads">
+  <a href="#" class="dock-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5 11 4v8H3zM12 3.9 21 2.5V12h-9zM3 13h8v8l-8-1.5zm9 0h9v9.5L12 21z"/></svg><span>Windows</span></a>
+  <a href="#" class="dock-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 2.1 14 12 3.6 21.9a1.7 1.7 0 0 1-.6-1.3V3.4c0-.5.2-1 .6-1.3zm11.7 11.1 2.4 2.3-11 6.2zm3.9-2.2 2.3 1.3c.7.4.7 1.4 0 1.8l-2.3 1.3-2.7-2.2zM5.1 1.6l11.1 6.3-2.8 2.7z"/></svg><span>Play Store</span></a>
+  <a href="#" class="dock-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 1c.2 1.3-.3 2.6-1.1 3.5-.8.9-2.1 1.6-3.3 1.5-.2-1.3.4-2.6 1.1-3.5.9-1 2.2-1.6 3.3-1.5zm3.8 17.1c-.6 1.3-1.3 2.6-2.3 3.9-1 1.1-1.9 2-3.2 2-1.3 0-1.7-.8-3.2-.8s-2 .8-3.2.8c-1.3 0-2.3-1-3.3-2.1-2-2.3-3.5-6.5-1.5-9.4 1-1.4 2.8-2.3 4.5-2.4 1.3 0 2.5.9 3.2.9.7 0 2.2-1 3.8-.9.7 0 2.6.3 3.9 2-.1.1-2.3 1.3-2.3 4 0 3.2 2.8 4.3 2.6 4z"/></svg><span>App Store</span></a>
+  <a href="#" class="dock-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 0c3 3 3 17 0 20M12 2c-3 3-3 17 0 20M2 12h20"/></svg><span>Web&nbsp;App</span></a>
+</aside>
+
+<!-- floating chat buttons -->
+<div class="floats" aria-hidden="true">
+  <a class="float tg" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24"><path fill="#fff" d="M9.9 15.3 9.7 19c.3 0 .5-.1.7-.3l1.8-1.7 3.7 2.7c.7.4 1.2.2 1.4-.6l2.5-11.7c.2-1-.3-1.4-1.1-1.1L3.6 10.6c-1 .4-1 1-.2 1.2l3.9 1.2 9.1-5.8c.4-.3.8-.1.5.2z"/></svg></a>
+  <a class="float wa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path fill="#fff" d="M20 3.5A10 10 0 0 0 3.3 16.3L2 22l5.8-1.3A10 10 0 1 0 20 3.5zm-3.8 14a6 6 0 0 1-3 .8c-1.7 0-3.3-.5-4.7-1.4l-.3-.2-3.4.8.8-3.3-.2-.3A7.8 7.8 0 0 1 4.2 10C4.2 5.6 7.8 2 12.3 2S20.4 5.6 20.4 10c0 2.1-.8 4-2.2 5.5a7.8 7.8 0 0 1-2 2zM16 12.6c-.3-.2-1.6-.8-1.9-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.3-.6.1-.3-.2-1.3-.5-2.5-1.6a9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.5.3-.5v-.5L7.7 5.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.1.2 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5 0 1.6-.7 1.9-1.3.2-.6.2-1.2.1-1.3l-.2-.1z"/></svg></a>
+</div>
+
+<!-- ========== HERO ========== -->
+<main id="top">
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="hero-card">
+    <div class="hero-card-bg"></div>
+
+    <div class="hero-copy">
+      <span class="eyebrow">Trade. Learn. Grow.</span>
+      <h1>Master the Markets <br/> with <span class="accent">ChartShaala.</span></h1>
+      <p>Learn from SEBI-aware mentors, practice on live charts, and trade with zero brokerage &amp; real-time data.</p>
+      <a href="#cta" class="cta-btn">Register Now <span class="arr">→</span></a>
+    </div>
+
+    <!-- phone mock with live chart -->
+    <div class="hero-phone" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-top">
+            <span class="phone-price">₹ 28,652.39</span>
+            <span class="phone-tag up">+ 2.68%</span>
+          </div>
+          <canvas id="heroChart"></canvas>
+          <div class="phone-list">
+            <div class="phone-row"><span class="dot up"></span>NIFTY<span class="val">21,468.22</span><span class="chg up">+1.24%</span></div>
+            <div class="phone-row"><span class="dot dn"></span>RELIANCE<span class="val">2,486.54</span><span class="chg dn">-0.58%</span></div>
+            <div class="phone-row"><span class="dot up"></span>TCS<span class="val">3,902.10</span><span class="chg up">+0.91%</span></div>
+            <div class="phone-row"><span class="dot up"></span>HDFCBANK<span class="val">1,654.30</span><span class="chg up">+0.44%</span></div>
+            <div class="phone-row"><span class="dot dn"></span>INFY<span class="val">1,412.75</span><span class="chg dn">-0.12%</span></div>
+          </div>
+          <div class="phone-cta">Download our App</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- chips -->
+  <div class="chips">
+    <div class="chip"><span class="chip-ico">0%</span><span>Brokerage</span></div>
+    <div class="chip"><span class="chip-ico ico-r">₹</span><span>Instant Payouts</span></div>
+    <div class="chip"><span class="chip-ico ico-user">👤</span><span>1-on-1 Mentor</span></div>
+    <div class="chip"><span class="chip-ico ico-live">LIVE</span><span>Webinars</span></div>
+    <div class="chip"><span class="chip-ico ico-expert">★</span><span>Expert Analyst</span></div>
+  </div>
+</section>
+
+<!-- ========== WHY ========== -->
+<section class="section" id="learn">
+  <div class="badge-pill"><span class="diamond"></span> Why ChartShaala?</div>
+  <h2 class="h-center">Why choose ChartShaala?</h2>
+  <p class="sub-center">Your trusted partner to learn, practice, and trade Indian &amp; global markets.</p>
+
+  <div class="why-grid">
+    <article class="why-card">
+      <div class="why-art art-zero"><span>0</span></div>
+      <h3>Zero Brokerage</h3>
+      <p>Commission-free trading for life — keep every rupee of your gains.</p>
+    </article>
+    <article class="why-card">
+      <div class="why-art art-500"><span>500<i>+</i></span></div>
+      <h3>500+ Strategies</h3>
+      <p>Battle-tested playbooks across equity, F&amp;O, crypto and commodities.</p>
+    </article>
+    <article class="why-card">
+      <div class="why-art art-support">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="18" y="12" width="28" height="40" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M28 28h8M24 34h16M28 40h8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M8 32h10M46 32h10M32 4v6M32 54v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>24×7 Support</h3>
+      <p>Real humans on Telegram, WhatsApp &amp; chat — whenever the market moves.</p>
+    </article>
+  </div>
+
+  <div class="dual-grid">
+    <article class="dual-card">
+      <div class="dual-art">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="6" y="6" width="22" height="22" rx="3" fill="currentColor"/>
+          <path d="M45 6l11 11-11 11-11-11z" fill="currentColor"/>
+          <rect x="6" y="36" width="22" height="22" rx="3" fill="currentColor"/>
+          <rect x="36" y="36" width="22" height="22" rx="3" fill="currentColor" opacity=".45"/>
+        </svg>
+      </div>
+      <h3>Register in 10 Sec</h3>
+      <p>Aadhaar &amp; PAN — quick, secure, seamless onboarding to all major segments.</p>
+    </article>
+
+    <article class="dual-card radial">
+      <div class="radial-viz" aria-hidden="true">
+        <div class="r-ring r1"></div>
+        <div class="r-ring r2"></div>
+        <div class="r-ring r3"></div>
+        <span class="r-node n1">U</span>
+        <span class="r-node n2">₹</span>
+        <span class="r-node n3">T</span>
+        <span class="r-node n4">₿</span>
+        <span class="r-node n5">B</span>
+        <span class="r-hub">
+          <svg viewBox="0 0 24 24"><path fill="#050505" d="M4 7h16v10H4zm2 2v6h12V9z"/></svg>
+        </span>
+      </div>
+      <h3>Payment Methods</h3>
+      <p>UPI, NetBanking, Bank Transfer, USDT — flexible rails for every trader.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========== PLATFORM ========== -->
+<section class="section" id="platform">
+  <div class="badge-pill"><span class="diamond"></span> Benefits of ChartShaala</div>
+  <h2 class="h-center">Learn &amp; Trade on<br/>One Smart Platform.</h2>
+  <p class="sub-center">Instant execution, real-time data, and learning baked into every click.</p>
+
+  <div class="window">
+    <div class="window-bar">
+      <span class="wd red"></span><span class="wd amber"></span><span class="wd green"></span>
+      <div class="window-title"><img src="logo.png" alt=""><span>ChartShaala</span></div>
+    </div>
+    <div class="window-body">
+      <ul class="feat-list">
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 6h16v12H4zm2 2v8h12V8z"/></svg></span>Get started with small amount</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-8 8a8 8 0 0 1 16 0z"/></svg></span>Dedicated Mentor Support*</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11V6h-2v9h7v-2z"/></svg></span>Register in 10 seconds</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 5h14v4H5zm0 6h14v8H5zm2 2v4h6v-4z"/></svg></span>One-click options trading</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0zm9-5v5l4 3-1 2-5-3V7z"/></svg></span>Instant withdrawal &amp; deposit</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="m2 2 20 20-2 2L2 4zm4 2h14v4H10l-4-4zm0 6h14v8H6z" opacity=".85"/></svg></span>No hidden fees</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5h2v4h3l-4 6-4-6h3z"/></svg></span>Zero brokerage</li>
+        <li><span class="fi"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v12H7l-3 3z"/></svg></span>Live chat support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="stats">
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="stats-grid">
+    <div><div class="stat-num" data-count="15372069" data-prefix="₹">₹0</div><div class="stat-lbl">Brokerage Saved</div></div>
+    <div><div class="stat-num" data-count="500000" data-suffix="+">0+</div><div class="stat-lbl">Happy Learners</div></div>
+    <div><div class="stat-num" data-count="83769870" data-prefix="₹">₹0</div><div class="stat-lbl">Profits Booked</div></div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="section howto" id="how">
+  <div class="badge-pill"><span class="diamond"></span> How it Works</div>
+  <h2 class="h-center">Start trading in 3 simple steps</h2>
+  <p class="sub-center">Sign up, fund your account, and start trading instantly.</p>
+
+  <div class="carousel" id="howCarousel">
+    <div class="dots" role="tablist">
+      <button class="dot" aria-label="Slide 1"></button>
+      <button class="dot active" aria-label="Slide 2"></button>
+      <button class="dot" aria-label="Slide 3"></button>
+      <button class="dot" aria-label="Slide 4"></button>
+    </div>
+    <div class="arrows">
+      <button class="arrow" id="howPrev" aria-label="Previous">←</button>
+      <button class="arrow" id="howNext" aria-label="Next">→</button>
+    </div>
+
+    <div class="c-track" id="howTrack">
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>Sign Up</h4>
+          <p>Create your account in seconds with Aadhaar &amp; PAN.</p>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 54c2-10 12-16 20-16s18 6 20 16" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>Fund Your Account</h4>
+          <p>Add money securely to start trading right away.</p>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><ellipse cx="32" cy="18" rx="18" ry="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 18v12c0 3 8 6 18 6s18-3 18-6V18M14 30v12c0 3 8 6 18 6s18-3 18-6V30" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>Start Trading</h4>
+          <p>Choose your market, place orders, track trades in real-time.</p>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><path d="M12 52V20M12 52h44M24 44V28M24 44l8-14 8 8 12-20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>Level Up</h4>
+          <p>Unlock advanced courses, strategies &amp; mentor reviews.</p>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><path d="M32 6l7 14 16 2-12 11 3 16-14-8-14 8 3-16L9 22l16-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PAY METHODS ========== -->
+<section class="section payments">
+  <div class="badge-pill"><span class="diamond"></span> Pay &amp; Withdraw</div>
+  <h2 class="h-center">Quick withdrawal with local payment options</h2>
+  <p class="sub-center">Instant deposit &amp; withdrawals, no restrictions. We accept:</p>
+
+  <div class="carousel" id="payCarousel">
+    <div class="dots" role="tablist">
+      <button class="dot" aria-label="Slide 1"></button>
+      <button class="dot active" aria-label="Slide 2"></button>
+      <button class="dot" aria-label="Slide 3"></button>
+      <button class="dot" aria-label="Slide 4"></button>
+    </div>
+    <div class="arrows">
+      <button class="arrow" id="payPrev" aria-label="Previous">←</button>
+      <button class="arrow" id="payNext" aria-label="Next">→</button>
+    </div>
+
+    <div class="c-track" id="payTrack">
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>UPI</h4>
+          <div class="c-icon"><span class="pay-badge">UPI</span></div>
+        </div>
+      </article>
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>Bank Transfer</h4>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><path d="M32 6l26 14H6zM10 22h8v26h-8zm14 0h8v26h-8zm14 0h8v26h-8zm14 0h4v26h-4zM6 54h52v4H6z" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </article>
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>USDT</h4>
+          <div class="c-icon"><span class="pay-badge">T</span></div>
+        </div>
+      </article>
+      <article class="c-card">
+        <div class="win-top"><span></span><span></span><span></span></div>
+        <div class="win-body">
+          <h4>NetBanking</h4>
+          <div class="c-icon">
+            <svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 24h48M16 38h12" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GLOBE TRUST ========== -->
+<section class="section trust">
+  <div class="badge-pill"><span class="diamond"></span> Our Trust all over India</div>
+  <div class="globe-wrap">
+    <div class="globe" aria-hidden="true"></div>
+    <div class="globe-copy">
+      <h2>₹97 Crore+</h2>
+      <p>Earned by Learners Globally at ChartShaala.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OPEN ACCOUNT ========== -->
+<section class="section open" id="cta">
+  <div class="badge-pill"><span class="diamond"></span> Our Trust All over World</div>
+  <h2 class="h-center">Open Account in Just 1 Minute and Start Trading</h2>
+  <p class="sub-center">Join ChartShaala now for the ultimate trading experience. Apply in 1 minute and access technical indicators &amp; customizable charts.</p>
+
+  <div class="open-grid">
+    <div class="open-card">
+      <svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14h16M16 20h16M16 26h10" stroke="currentColor" stroke-width="2"/></svg>
+      <p>Sign Up for<br/>ChartShaala</p>
+    </div>
+    <div class="open-card">
+      <svg viewBox="0 0 48 48"><path d="M14 6h16l8 8v28H14z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <p>Submit Docs<br/>if Needed</p>
+    </div>
+    <div class="open-card">
+      <svg viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <p>Fund Your<br/>Account</p>
+    </div>
+    <div class="open-card">
+      <svg viewBox="0 0 48 48"><path d="M8 40V16M16 40V22M24 40V8M32 40V18M40 40V26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 12l8-6 8 10 8-6 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <p>Start<br/>Trading</p>
+    </div>
+  </div>
+
+  <a href="#signin" class="cta-btn center">Register Now <span class="arr">→</span></a>
+</section>
+
+<!-- ========== SUPPORT ========== -->
+<section class="section support" id="support">
+  <div class="badge-pill"><span class="diamond"></span> Need Our Support</div>
+  <h2 class="h-center">Support</h2>
+  <p class="sub-center">Need help? We're here 24/7.</p>
+  <p class="sub-center small">At ChartShaala, support means speed, accuracy, and real humans — no waiting games. Whether it's a transaction query, account issue, or technical glitch, our team's got your back in minutes.</p>
+
+  <div class="support-frame">
+    <div class="support-inner">
+      <div class="support-avatars">
+        <span class="av"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 22c0-5 4-8 8-8s8 3 8 8" fill="currentColor"/></svg></span>
+        <span class="av"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 22c0-5 4-8 8-8s8 3 8 8" fill="currentColor"/></svg></span>
+        <span class="av"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 22c0-5 4-8 8-8s8 3 8 8" fill="currentColor"/></svg></span>
+      </div>
+      <div class="support-lbl">Our Mentor Team • Online</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer" id="footer">
+  <div class="footer-glow" aria-hidden="true"></div>
+  <div class="footer-top">
+    <div class="foot-brand">
+      <a class="brand" href="#top">
+        <img src="logo.png" alt="" class="brand-mark" />
+        <span class="brand-text">ChartShaala</span>
+      </a>
+      <p class="foot-tag">Trade. Learn. Grow.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c2.7 0 3 0 4.1.1 1 0 1.8.2 2.4.5.6.2 1.1.6 1.6 1s.8 1 1 1.6c.3.6.4 1.4.5 2.4 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.8-.5 2.4-.2.6-.6 1.1-1 1.6s-1 .8-1.6 1c-.6.3-1.4.4-2.4.5-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.8-.2-2.4-.5-.6-.2-1.1-.6-1.6-1s-.8-1-1-1.6c-.3-.6-.4-1.4-.5-2.4 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.8.5-2.4.2-.6.6-1.1 1-1.6s1-.8 1.6-1c.6-.3 1.4-.4 2.4-.5C9 2 9.3 2 12 2zm0 2c-2.7 0-3 0-4 .1-.8 0-1.3.2-1.6.3-.4.2-.7.4-1 .7s-.5.6-.7 1c-.1.3-.3.8-.3 1.6 0 1-.1 1.3-.1 4s0 3 .1 4c0 .8.2 1.3.3 1.6.2.4.4.7.7 1s.6.5 1 .7c.3.1.8.3 1.6.3 1 0 1.3.1 4 .1s3 0 4-.1c.8 0 1.3-.2 1.6-.3.4-.2.7-.4 1-.7s.5-.6.7-1c.1-.3.3-.8.3-1.6 0-1 .1-1.3.1-4s0-3-.1-4c0-.8-.2-1.3-.3-1.6-.2-.4-.4-.7-.7-1s-.6-.5-1-.7c-.3-.1-.8-.3-1.6-.3-1 0-1.3-.1-4-.1zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm4.8-2.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6A22 22 0 0 0 14.3 4.5c-2.5 0-4.1 1.5-4.1 4.2V11H7.5v3.1H10V22z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 3.5A10 10 0 0 0 3.3 16.3L2 22l5.8-1.3A10 10 0 1 0 20 3.5zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.8.8-3.3-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.5a3 3 0 0 0-2-2C19 5 12 5 12 5s-7 0-9 .5a3 3 0 0 0-2 2C.5 9.5.5 12 .5 12s0 2.5.5 4.5a3 3 0 0 0 2 2C5 19 12 19 12 19s7 0 9-.5a3 3 0 0 0 2-2c.5-2 .5-4.5.5-4.5s0-2.5-.5-4.5zM10 15.5v-7l6 3.5z"/></svg></a>
+        <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.9 15.3 9.7 19c.3 0 .5-.1.7-.3l1.8-1.7 3.7 2.7c.7.4 1.2.2 1.4-.6l2.5-11.7c.2-1-.3-1.4-1.1-1.1L3.6 10.6c-1 .4-1 1-.2 1.2l3.9 1.2 9.1-5.8c.4-.3.8-.1.5.2z"/></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <h4>Trading</h4>
+      <ul>
+        <li><a href="#">Margin Trading</a></li>
+        <li><a href="#">Options</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Downloads</a></li>
+        <li><a href="#">Academy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-divider"></div>
+
+  <div class="foot-bottom">
+    <div class="foot-community">
+      <h5>Join our Telegram</h5>
+      <p>Real-time alerts, trade ideas &amp; mentor AMAs.</p>
+    </div>
+    <div class="foot-community">
+      <h5>Join our WhatsApp Community</h5>
+      <p>Daily market prep, chart setups &amp; Q&amp;A.</p>
+    </div>
+  </div>
+
+  <div class="foot-legal">
+    <small>© <span id="yr"></span> ChartShaala — Trade. Learn. Grow. All rights reserved.</small>
+    <small>Investments in securities markets are subject to market risks. Read all related documents carefully.</small>
+  </div>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:kwik.trade)",
+      "Bash(ffmpeg -version)",
+      "PowerShell(Get-Command ffmpeg -ErrorAction SilentlyContinue)",
+      "Read(//c/Users/Gaj/AppData/Local/Microsoft/WinGet/**)",
+      "PowerShell(python -m pip install --quiet imageio-ffmpeg 2>&1)",
+      "PowerShell(python -c \"import imageio_ffmpeg; print\\(imageio_ffmpeg.get_ffmpeg_exe\\(\\)\\)\")",
+      "PowerShell($ff = python -c \"import imageio_ffmpeg; print\\(imageio_ffmpeg.get_ffmpeg_exe\\(\\)\\)\"; & $ff -i \"c:\\\\Users\\\\Gaj\\\\Desktop\\\\B\\\\CS -2\\\\rec.mp4\" 2>&1 | Select-String -Pattern \"Duration|Stream|Video:\" | Select-Object -First 10)",
+      "PowerShell($ff = python -c \"import imageio_ffmpeg; print\\(imageio_ffmpeg.get_ffmpeg_exe\\(\\)\\)\"; & $ff -y -i \"c:\\\\Users\\\\Gaj\\\\Desktop\\\\B\\\\CS -2\\\\rec.mp4\" -vf \"fps=1/2,scale=960:-1\" \"c:\\\\Users\\\\Gaj\\\\Desktop\\\\B\\\\CS -2\\\\frames\\\\f%03d.jpg\" 2>&1 | Select-Object -Last 3)",
+      "PowerShell(Start-Process \"c:\\\\Users\\\\Gaj\\\\Desktop\\\\B\\\\CS -2\\\\index.html\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Gaj\\Desktop\\B\\CS -2"
+    ]
+  }
+}

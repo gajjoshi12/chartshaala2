@@ -3,10 +3,23 @@
   'use strict';
 
   /* ---------- loader ---------- */
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    setTimeout(() => loader && loader.classList.add('hide'), 900);
-  });
+  const loader = document.getElementById('loader');
+  let loaderHidden = false;
+  const hideLoader = () => {
+    if (loaderHidden || !loader) return;
+    loaderHidden = true;
+    loader.classList.add('hide');
+    // remove from DOM after the fade so it can never block touches
+    setTimeout(() => loader.remove(), 700);
+  };
+  if (document.readyState === 'complete') {
+    setTimeout(hideLoader, 600);
+  } else {
+    window.addEventListener('load', () => setTimeout(hideLoader, 600), { once: true });
+    document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 1200), { once: true });
+  }
+  // hard fallback — never let the loader stick around past 3.5s
+  setTimeout(hideLoader, 3500);
 
   /* ---------- year ---------- */
   const yr = document.getElementById('yr');

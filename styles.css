@@ -196,6 +196,25 @@ body::after {
 @media (min-width: 881px) {
   .nav-cta { display: none; }
 }
+@media (max-width: 880px) {
+  .nav-cta {
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 520px) {
+  .nav-cta {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .menu-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .menu-btn span { width: 16px; }
+  .nav-inner { padding: 10px 14px; gap: 10px; }
+}
 
 /* ============================================================ DRAWER */
 .drawer {
